@@ -1,151 +1,189 @@
-import java.util.Scanner;
-
-public class KnightsTour1
+class RealKnightsTour 
+{ 
+	
+    public static final int X = 5; 
+	public static final int Y = 5;
+    public static final int knightsXMoves[] = {2, 1, -1, -2, -2, -1, 1, 2}; 
+    public static final int knightsYMoves[] = {1, 2, 2, 1, -1, -2, -2, -1};
+	public static int i = 2;
+	public static int j = 2;
+	
+	
+	
+    public static void main(String args[]) 
+		{  
+			
+			long beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+			
+			long totalStartTime = System.nanoTime();
+			
+        	for (int x = 0; x < X; x++) 
+				{ 
+            		for (int y = 0; y < Y; y++)
+						{
+							long startTime = System.nanoTime();
+							
+							program(x,y); 
+							
+							long endTime   = System.nanoTime();
+							long totalTime = endTime - startTime;
+							System.out.println("iteration time: " + totalTime + " nano seconds");
+							System.out.println();
+							
+							
+						}
+				}
+			long totalEndTime   = System.nanoTime();
+			long realTotalTime = totalEndTime - totalStartTime;
+			
+			long afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+			long actualMemUsed=afterUsedMem-beforeUsedMem;
+			
+			
+			System.out.println("total time: " + realTotalTime + " nano seconds");
+			System.out.println("average time: " + realTotalTime/(X*Y) + " nano seconds");
+			System.out.println();
+			System.out.println("total memory used: " + actualMemUsed + " Bytes");
+			System.out.println("average memory used: " + actualMemUsed/(X*Y) + " Bytes");
+    	}
+		
+	public static void program(int i, int j)
 	{
-		
-		
-		
-		//knights valid moves
-		public static final int[] knightsXMoves = {2,1,-1,-2,-2,-1,1,2};
-		public static final int[] knightsYMoves = {1,2,2,1,-1,-2,-2,-1};
+    	int knightsMoves[][] = new int[X][Y]; 
 
-			
-		
-		
-		
-		
-		public static void main (String[] args)  
+    	initializeArray(knightsMoves);
+
+		int moveCount = 0;
+
+   	 	knightsMoves[i][j] = moveCount; 
+		moveCount++;
+
+
+    	if (!recursionTool(i, j, moveCount, knightsMoves, knightsXMoves, knightsYMoves)) 
+
+			{ 
+       			System.out.println("DNE");
+				System.out.println();
+        		
+    		}
+		else
 			{
-				Scanner keyboard = new Scanner(System.in);
-				
-				System.out.println("please enter your knight's starting x chordinate");
-				int i = keyboard.nextInt();
-				System.out.println("please enter your knight's starting y chordinate");
-				int j = keyboard.nextInt();
-				System.out.println("please enter your board's x dimention");
-				int x = keyboard.nextInt();
-				System.out.println("please enter your board's y dimention");
-				int y = keyboard.nextInt();
-				
-				//crosses off visited spots
-				boolean[][] spotTaken = new boolean [x][y];
-				
-				for(int q = 0; q < x; q++)
-					{
-						for(int a = 0; a < y; a++)  
-				        {
-							spotTaken[q][a] = true;
-						}
-					}
-					
-				spotTaken[i-1][j-1] = false;
-				
-				int[] avalPrime = new int [8];
-				boolean[] avalPrime = new boolean [8];
-					
-				//solution matrix	
-				int[][] knightsMoves = new int [x][y];
-				
-				int min = 7;
-				int maxMoves = x*y-1;
-				int moveCounter = 1;
-				
-				int[] moveMemory = new int [maxMoves];
-				
-		
-				while(moveCounter<(maxMoves - 1))
-					{
-						
-						for(int w = 0; w<8;w++)
-							
+	        	for (int x = 0; x < X; x++) 
+					{ 
+	            		for (int y = 0; y < Y; y++)
 							{
-								if (((knightsXMoves[w]+i)>0) && ((knightsYMoves[w]+j)>0) && ((knightsXMoves[w]+i)<=x) && ((knightsYMoves[w]+j)<=y) && (spotTaken[knightsXMoves[w]+i-1][knightsYMoves[w]+j-1]))
-									
-									{
-	                 				   
-										int iPrime = knightsXMoves[w]+i;
-										int jPrime = knightsYMoves[w]+j;	
-										
-				
-											for(int t = 0; t<8;t++)
-												
-												{
-													if (((knightsXMoves[t]+iPrime)>0) && ((knightsYMoves[t]+jPrime)>0) && ((knightsXMoves[t]+iPrime)<=x) && ((knightsYMoves[t]+jPrime)<=y) && (spotTaken[knightsXMoves[t]+iPrime-1][knightsYMoves[t]+jPrime-1]))
-														{
-															avalPrime[w]++;
-															avalPrimeValid[w]=true;
-														}
-												}
-														
-													
-									}
-									
-								else
-									{
-										avalPrime[w]=0;
-										avalPrimeValid[]=false;
-									}	
+	                			System.out.print(knightsMoves[x][y] + "|"); 
 							}
-								
-						for (int counter = 0; counter < 8; counter++)
-							
-								{
-											
-									if (avalPrime[counter] < min && avalPrime[counter] > 0)
-										
-										  {
-										      min = counter;
-										  }
-												
-								}
-						
-							    
-						
-						i = knightsXMoves[min]+i;
-						j = knightsYMoves[min]+j;
-						moveMemory[moveCounter-1]=min;
-						spotTaken[i-1][j-1] = false;
-						knightsMoves[i-1][j-1] = moveCounter;
-					
-						moveCounter++;
-						min = 7;
-					  
-						for(int l = 0; l < 8; l++)  
-				        	{
-								avalPrime[l] = 0;
-							}
-					
-						
+	            		System.out.println(); 
 					}
-					
-					for(int w = 0; w<8;w++)
-						{
-							if (((knightsXMoves[w]+i)>0) && ((knightsYMoves[w]+j)>0) && ((knightsXMoves[w]+i)<=x) && ((knightsYMoves[w]+j)<=y) && (spotTaken[knightsXMoves[w]+i-1][knightsYMoves[w]+j-1]))
-								{
-									
-									i = knightsXMoves[w]+i;
-									j = knightsYMoves[w]+j;
-									spotTaken[i-1][j-1]=false;
-									knightsMoves[i-1][j-1] = moveCounter;
-									moveCounter++;
-									w=8;
-								
-								}
-				
-						}
-			
-										
-					for(int z = 0; z<x; z++)
-						{
-							System.out.print("|");
-					    	for(int c = 0; c<y; c++)
-					    		{
-					       	 		System.out.print(knightsMoves[z][c]);
-									System.out.print("|");
-					    		}
-					    	System.out.println();
-						}
-				
-					
+				System.out.println();
 			}
 	}
+	
+ 
+    public static boolean availibility(int x, int y, int knightsMoves[][])
+		{ 
+        	return (x >= 0 && y >= 0 && x < X && y < Y && knightsMoves[x][y] == -1);
+    	} 
+  	  		
+     
+	public static int[][] initializeArray(int knightsMoves[][])
+		{
+    		for (int x = 0; x < X; x++) 
+				{
+        			for (int y = 0; y < Y; y++) 
+						{
+							knightsMoves[x][y] = -1;
+						}
+					}
+			return knightsMoves;
+		}
+  
+	
+  
+    public static boolean recursionTool(int x, int y, int kCounter, int knightsMoves[][], int knightsXMoves[], int knightsYMoves[]) 
+		{ 
+        	int xMove, yMove; 
+        	
+			if (kCounter == X * Y) 
+				{
+            		return true; 
+				}
+  			
+			int avalPrime[] = new int[8];
+			
+			int movePrioritization[] = new int[8];
+		    
+			//for (int w = 0; w<8; w++)
+					
+				{
+					//if (availibility(x, y, knightsMoves))
+							
+						{
+             				   
+						//	int iPrime = knightsXMoves[w]+x;
+						//	int jPrime = knightsYMoves[w]+y;	
+								
+		
+							//for(int t = 0; t<8;t++)
+										
+								{
+									//if (availibility(iPrime, jPrime, knightsMoves))
+											
+										{
+											//	avalPrime[w]++;
+
+										}
+								}
+												
+											
+						}
+							
+					//else
+						{
+							//avalPrime[w]=0;
+						}	
+				}
+			
+			
+			//for (int counter = 0; counter < 8; counter++)
+					
+					{
+									
+						//if (avalPrime[counter]>0 && avalPrime[counter])
+								
+								
+										
+					}
+			
+			
+			
+			
+			
+			
+        	for (int k = 0; k < 8; k++) 
+				{ 
+            		xMove = x + knightsXMoves[k]; 
+            		yMove = y + knightsYMoves[k]; 
+					
+            			if (availibility(xMove, yMove, knightsMoves)) 
+							{ 
+                				knightsMoves[xMove][yMove] = kCounter; 
+								
+								
+                				if (recursionTool(xMove, yMove, kCounter + 1, knightsMoves, knightsXMoves, knightsYMoves)) 
+						
+                    				{
+										return true; 
+									}
+                				else
+									{
+                   		 				knightsMoves[xMove][yMove] = -1;
+									} 
+            				} 
+        		} 
+  
+        	return false; 
+    	} 
+  
+}  
