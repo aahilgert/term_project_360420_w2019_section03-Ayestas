@@ -103,7 +103,8 @@ class RealKnightsTour
   
     public static boolean recursionTool(int x, int y, int kCounter, int knightsMoves[][], int knightsXMoves[], int knightsYMoves[]) 
 		{ 
-        	int xMove, yMove; 
+        	int xMove;
+			int yMove; 
         	
 			if (kCounter == X * Y) 
 				{
@@ -113,25 +114,29 @@ class RealKnightsTour
 			int avalPrime[] = new int[8];
 			
 			int movePrioritization[] = new int[8];
+			
+			for 
+				
+				avalPrime[]
 		    
-			//for (int w = 0; w<8; w++)
+			for (int w = 0; w<8; w++)
 					
 				{
-					//if (availibility(x, y, knightsMoves))
+					if (availibility(x, y, knightsMoves))
 							
 						{
              				   
-						//	int iPrime = knightsXMoves[w]+x;
-						//	int jPrime = knightsYMoves[w]+y;	
+							int iPrime = knightsXMoves[w]+x;
+							int jPrime = knightsYMoves[w]+y;	
 								
 		
-							//for(int t = 0; t<8;t++)
+							for(int t = 0; t<8;t++)
 										
 								{
-									//if (availibility(iPrime, jPrime, knightsMoves))
+									if (availibility(iPrime, jPrime, knightsMoves))
 											
 										{
-											//	avalPrime[w]++;
+											avalPrime[w]++;
 
 										}
 								}
@@ -139,26 +144,43 @@ class RealKnightsTour
 											
 						}
 							
-					//else
+					else
 						{
-							//avalPrime[w]=0;
+							avalPrime[w]=-1;
 						}	
 				}
 			
 			
-			//for (int counter = 0; counter < 8; counter++)
+			for (int counter = 0; counter < 8; counter++)
 					
 					{
 									
-						//if (avalPrime[counter]>0 && avalPrime[counter])
+						if (avalPrime[counter]=0)
 								
+						{
+							avalPrime[counter]=-1;
+						}
 								
 										
 					}
+					
+			int temp
+					
+			for (int i = 0; i <  - 1; i++)
+				{
+					for(int j = 0; j <  - 1; j++)
+					 {
+					    if(numbers[i][] < numbers[j + 1])
+					    {
+					      temp = numbers [j + 1];
+					      numbers [j + 1]= numbers [i];
+					      numbers [i] = temp;
+						  numbers 
+					    }
+					  }
+					}
 			
-			
-			
-			
+					// trying to impliment heuristic here code doesnt work because of this edit 
 			
 			
         	for (int k = 0; k < 8; k++) 
