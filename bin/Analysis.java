@@ -1,5 +1,4 @@
 
-
 class Analysis 
 {
 	
@@ -9,15 +8,39 @@ class Analysis
 		
 		
 		
-		BoardClass sixBySix = new BoardClass(6,6);
+		BoardClass fiveByFive = new BoardClass(5,5);
 		
-		int[][] solnMatrix = sixBySix.programIteration(1,1);
-		
-		BoardClass.printFunction(solnMatrix);
+		BoardStatistics fiveByFiveStatistics = new BoardStatistics(5,5);
 		
 		
 		
+	        	for (int x = 0; x < 5; x++) 
+					{ 
+	            		for (int y = 0; y < 5; y++)
+							{
+								fiveByFiveStatistics.addRunTotals(fiveByFive.programIterationSpeed(x, y));
+		 
+							}
+	            		
+					}
 		
+		
+		
+	  
+		
+		System.out.println(fiveByFiveStatistics.getAverageMemUsed());
+		
+		System.out.println(fiveByFiveStatistics.getAverageRunTime());
+		
+		System.out.println(fiveByFiveStatistics.getSpaces());
+		
+		System.out.println(fiveByFiveStatistics.getTotalRuns());
+		
+		System.out.println(fiveByFiveStatistics.isBoardValid());
+		
+		
+		
+	/*	
 	
     String filename = "AnalysisOutput.txt";
     PrintWriter outputFile = null;
@@ -31,7 +54,7 @@ class Analysis
         System.exit(0);
     }
 
-
+	*/
 
 
 

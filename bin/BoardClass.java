@@ -24,7 +24,12 @@ public class BoardClass
 		{  
 			
 			
+			
 			RunData iterationData = new RunData();
+			
+			iterationData.boardSize(X,Y);
+			
+			iterationData.initialPoint(x,y);
 			
 			iterationData.initialUsedMem = Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
 			
