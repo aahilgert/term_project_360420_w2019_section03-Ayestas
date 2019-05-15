@@ -140,7 +140,7 @@ class RealKnightsTour
 
 										}
 								}
-												
+				// comparator and sort 	
 											
 						}
 							
