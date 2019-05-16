@@ -1,4 +1,4 @@
-class Analysis 
+class SameersTestAnalysis 
 {
 	// with the running of this code, the final data matrix will be shown in the terminal
 	// this matrix contains average memory (in bytes) per run on each sized board on the first line
@@ -13,6 +13,7 @@ class Analysis
 		
 		BoardClass fiveByFive = new BoardClass(5,5);
 		
+		/*
 		BoardClass fiveBySix = new BoardClass(5,6);
 		
 		BoardClass sixBySix = new BoardClass(6,6);
@@ -35,13 +36,13 @@ class Analysis
 		
 		BoardClass tenByTen = new BoardClass(10,10);
 		
-		
+		*/
 		System.out.println("done with class initialization");
 		
 		//initialization of run statistics for each chessboard
 		
 		BoardStatistics fiveByFiveStatistics = new BoardStatistics(5,5);
-		
+		/*
 		BoardStatistics fiveBySixStatistics = new BoardStatistics(5,6);
 		
 		BoardStatistics sixBySixStatistics = new BoardStatistics(6,6);
@@ -63,7 +64,8 @@ class Analysis
 		BoardStatistics nineByTenStatistics = new BoardStatistics(9,10);
 		
 		BoardStatistics tenByTenStatistics = new BoardStatistics(10,10);
-		
+		*/
+			
 		System.out.println("done with statistics initialization");
 		
 	   	// running of knight's tour solving at each starting square and storing of run data for each board
@@ -80,6 +82,8 @@ class Analysis
 				}
 				
 			System.out.println("done five by five");
+			
+			/*
 
 		for (int x = 0; x < fiveBySixStatistics.getBoardX(); x++) 
 					{
@@ -225,15 +229,15 @@ class Analysis
 				}
 
 		System.out.println("done ten by ten");
-		
+		*/
 		// final data matrix
 		
 		
-		long[][] data = new long[3][11];
+		long[][] data = new long[3][1];
 		
 		//collecting of average memory used per run data
 		
-		data[0][0]=fiveByFiveStatistics.getAverageMemUsed();
+		data[0][0]=fiveByFiveStatistics.getAverageMemUsed();/*
 		data[0][1]=fiveBySixStatistics.getAverageMemUsed();
 		data[0][2]=sixBySixStatistics.getAverageMemUsed();
 		data[0][3]=sixBySevenStatistics.getAverageMemUsed();
@@ -245,10 +249,10 @@ class Analysis
 		data[0][9]=nineByNineStatistics.getAverageMemUsed();
 		data[0][10]=nineByTenStatistics.getAverageMemUsed();
 		data[0][11]=tenByTenStatistics.getAverageMemUsed();
-		
+		*/
 		//collecting of average time taken per run data
 	
-		data[1][0]=fiveByFiveStatistics.getAverageRunTime();
+		data[1][0]=fiveByFiveStatistics.getAverageRunTime();/*
 		data[1][1]=fiveBySixStatistics.getAverageRunTime();
 		data[1][2]=sixBySixStatistics.getAverageRunTime();
 		data[1][3]=sixBySevenStatistics.getAverageRunTime();
@@ -260,10 +264,10 @@ class Analysis
 		data[1][9]=nineByNineStatistics.getAverageRunTime();
 		data[1][10]=nineByTenStatistics.getAverageRunTime();
 		data[1][11]=tenByTenStatistics.getAverageRunTime();
-		
+		*/
 		//collecting of number of spaces on each chessboard
 		
-		data[2][0]=fiveByFiveStatistics.getSpaces();
+		data[2][0]=fiveByFiveStatistics.getSpaces();/*
 		data[2][1]=fiveBySixStatistics.getSpaces();
 		data[2][2]=sixBySixStatistics.getSpaces();
 		data[2][3]=sixBySevenStatistics.getSpaces();
@@ -276,12 +280,12 @@ class Analysis
 		data[2][10]=nineByTenStatistics.getSpaces();
 		data[2][11]=tenByTenStatistics.getSpaces();
 		
-						
+		*/
 		// printing of final data matrix
-			
+		
         	for (int x = 0; x < 3; x++) 
 				{ 
-            		for (int y = 0; y < 3; y++)
+            		for (int y = 0; y < 1; y++)
 						{
                 			System.out.print(data[x][y] + " "); 
 						}
@@ -290,63 +294,18 @@ class Analysis
 			System.out.println();	
 			
 			
+			
+			System.out.println("average memory used per run: " + fiveByFiveStatistics.getAverageMemUsed() + " bytes");
 		
-/*
-PLEASE IGNORE THE FOLLOWING TEXT. THIS IS FOR A POTENTIAL GRAPHING PORTION OF THE CODE, AND HAD NOTHING TO DO WITH THE COMPUTATIONAL ASPECT OF THIS PROJECT
-*/
+			System.out.println("average time per run: " + fiveByFiveStatistics.getAverageRunTime() + " nanoseconds");
 		
+			System.out.println("number of spaces on this board: " + fiveByFiveStatistics.getSpaces());
 		
-	//	writeMatrix("data.txt", data);
+			System.out.println("number of valid runs on this board: " + fiveByFiveStatistics.getTotalRuns());
+		
+			System.out.println("does this board have a valid knight's tour? : " + fiveByFiveStatistics.isBoardValid());
 			
 			
-		/*
-			
-	  
-		
-		System.out.println(fiveByFiveStatistics.getAverageMemUsed());
-		
-		System.out.println(fiveByFiveStatistics.getAverageRunTime());
-		
-		System.out.println(fiveByFiveStatistics.getSpaces());
-		
-		System.out.println(fiveByFiveStatistics.getTotalRuns());
-		
-		System.out.println(fiveByFiveStatistics.isBoardValid());
-		*/
-		
-		
-	/*	
-	
-    String filename = "AnalysisOutput.txt";
-    PrintWriter outputFile = null;
-    try
-    {
-        outputFile = new PrintWriter(new FileOutputStream(filename,false));
-    }
-    catch(FileNotFoundException e)
-    {
-        System.out.println("File error.  Program aborted.");
-        System.exit(0);
-    }
-
-	*/
- 
-    }
-
-	/*
-	public static void writeMatrix(String filename, long[][] matrix) {
-	    try {
-	        BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
-
-	        for (int i = 0; i < matrix.length; i++) {
-				for (int j = 0; j < matrix[i].length; j++) {
-				    bw.write(matrix[i][j] + ((j == matrix[i].length-1) ? "" : ","));
-				}
-	            bw.newLine();
-	        }
-	        bw.flush();
-	    } catch (IOException e) {}
+		}
 	}
-		*/
-
-}
+			

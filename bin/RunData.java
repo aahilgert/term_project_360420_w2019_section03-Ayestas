@@ -10,7 +10,7 @@ public class RunData
 	public long endTime;
 	public int[][] solnMatrix;
 	
-	public void boardSize(int X, int Y)
+	public void boardSize(int X, int Y) // initiates boardsize
 	{
 		this.X = X;
 		this.Y = Y;
@@ -18,69 +18,69 @@ public class RunData
 		
 	}
 	
-	public void initialPoint(int i, int j)
+	public void initialPoint(int i, int j) // initiates starting point 
 	{
 		this.i = i;
 		this.j = j;
 		
 	}
 
-	public void initialUsedMem(long initialUsedMem)
+	public void initialUsedMem(long initialUsedMem) // collects initial computer memory 
 	{
 		
 		this.initialUsedMem = initialUsedMem;
 		
 	}
 	
-	public void finalUsedMem(long finalUsedMem)
+	public void finalUsedMem(long finalUsedMem) // collects final computer memory 
 	{
 		
 		this.finalUsedMem = finalUsedMem;
 		
 	}
 
-	public void startTime(long startTime)
+	public void startTime(long startTime) // collects start time 
 	{
 		
 		this.startTime = startTime;
 		
 	}
 	
-	public void endTime(long endTime)
+	public void endTime(long endTime) // collects end time
 	{
 		
 		this.endTime = endTime;
 		
 	}
 	
-	public void solnMatrix(int[][] solnMatrix)
+	public void solnMatrix(int[][] solnMatrix) // stores solution matrix
 	{
 		
 		this.solnMatrix = solnMatrix;
 		
 	}
 	
-	public int[][] getSolution()
+	public int[][] getSolution() // returns solution matrix
 	{
 		
 		return solnMatrix;
 	}
 	
-	public long getRunTime()
+	public long getRunTime() // calculates and returns run time for iteration
 	{
 		
 		return endTime - startTime;
 		// nanoseconds
 	}
 	
-	public long getMemUsed()
+	public long getMemUsed() // calculates and returns memory used by iteration
 	{
 		
 		return finalUsedMem - initialUsedMem;
 		// bytes
 	}
 	
-	public boolean isSolved()
+	public boolean isSolved() // returns true if the starting space has a valid knight's tour
 	{
 		
 		for (int k=0; k < solnMatrix.length; k++)
@@ -99,34 +99,34 @@ public class RunData
 		
 	}
 	
-	public int getBoardX()
+	public int getBoardX() // returns board x length 
 		{
 		
 			return X;
 		
 		}
-	public int getBoardY()
+	public int getBoardY() // returns board y length 
 		{
 		
 			return Y;
 				
 		}
 		
-	public int getRunI()
+	public int getRunI() // returns knight's initial i position 
 		{
 		
 			return i;
 				
 		}
 	
-	public int getRunJ()
+	public int getRunJ()  // returns knight's initial j position 
 		{
 		
 			return j;
 				
 		}
 		
-	public boolean isCorrectRun()
+	public boolean isCorrectRun() // data validates if run is correct; completes run in reverse order, assuring that all moves are correct vectors and on the chess board 
 		{
 				final int knightsXMoves[] = {2, 1, -1, -2, -2, -1, 1, 2}; 
 			    final int knightsYMoves[] = {1, 2, 2, 1, -1, -2, -2, -1};

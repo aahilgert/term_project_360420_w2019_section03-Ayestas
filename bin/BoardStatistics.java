@@ -7,7 +7,7 @@ public class BoardStatistics
 	public long sumMem;
 	public long totalRuns;
 	
-	public BoardStatistics(int X, int Y)
+	public BoardStatistics(int X, int Y) // constructor, initiates boardsize
 		{
 		
 			this.X=X;
@@ -18,7 +18,7 @@ public class BoardStatistics
 	
 		}
 		
-	public void addRunTotals(RunData x)
+	public void addRunTotals(RunData x) //sums data from all succesful RunDatas of its boardsize
 	{
 		
 		if(x.isSolved() && x.isCorrectRun())
@@ -37,33 +37,33 @@ public class BoardStatistics
 	}
 		
 	
-	public int getBoardX()
+	public int getBoardX() // returns board's X length
 		{
 		
 			return X;
 			
 		}
-	public int getBoardY()
+	public int getBoardY() // returns board's Y length
 		{
 		
 			return Y;
 				
 		}
 		
-	public int getSpaces()
+	public long getSpaces() // returns total number of spaces on this board
 	{
 		
-		return X*Y;
+		return (long)X*Y;
 	}
 	
-	public long getTotalTime()
+	public long getTotalTime() // returns total time for all iterations 
 		
 	{
 		return sumTime;
 		
 	}
 	
-	public long getTotalMem()
+	public long getTotalMem() // returns total time for all iterations 
 		
 	{
 		
@@ -71,7 +71,7 @@ public class BoardStatistics
 		
 	}
 	
-	public long getTotalRuns()
+	public long getTotalRuns() // returns number of succesful runs 
 		
 	{
 		
@@ -79,7 +79,7 @@ public class BoardStatistics
 		
 	}
 	
-	public long getAverageMemUsed()
+	public long getAverageMemUsed() // returns average memory used by each succesful run 
 	
 	{
 		
@@ -87,7 +87,7 @@ public class BoardStatistics
 		
 	}
 
-	public long getAverageRunTime()
+	public long getAverageRunTime() // returns average run time for each succesful run 
 	
 	{
 		
@@ -95,7 +95,7 @@ public class BoardStatistics
 		
 	}
 	
-	public boolean isBoardValid()
+	public boolean isBoardValid() // returns true if board has a valid knight's tour
 	{
 		
 		if(totalRuns==0)

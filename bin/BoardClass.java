@@ -6,10 +6,11 @@ public class BoardClass
 	
 	
 	
-    public static final int knightsXMoves[] = {2, 1, -1, -2, -2, -1, 1, 2}; 
-    public static final int knightsYMoves[] = {1, 2, 2, 1, -1, -2, -2, -1};
+    public static final int knightsXMoves[] = {2, 1, -1, -2, -2, -1, 1, 2};  // knight's legal i vectors 
+    public static final int knightsYMoves[] = {1, 2, 2, 1, -1, -2, -2, -1};  // knight's legal j vectors 
 	
-    public BoardClass(int X, int Y) {
+    public BoardClass(int X, int Y) // constructor initializes board size
+	{
 
       this.X = X;
       this.Y = Y;
@@ -20,7 +21,7 @@ public class BoardClass
 	
 	
 	
-    public RunData programIterationSpeed(int x, int y) 
+    public RunData programIterationSpeed(int x, int y) // runs program for a set initital point and collects time and memory data, returns a RunData object 
 		{  
 			
 			
@@ -43,16 +44,9 @@ public class BoardClass
 			
 			return iterationData;
 			
-			
-		//	System.out.println("total time: " + realTotalTime + " nano seconds");
-		//	System.out.println("average time: " + realTotalTime/(X*Y) + " nano seconds");
-		//	System.out.println();
-		//	System.out.println("total memory used: " + actualMemUsed + " Bytes");
-		//	System.out.println("average memory used: " + actualMemUsed/(X*Y) + " Bytes");
-			
     	}
 		
-	public static int[][] programIteration(int i, int j)
+	public static int[][] programIteration(int i, int j) //initializes solution array and initial position, then calls the recursion tool
 	{
     	int knightsMoves[][] = new int[X][Y]; 
 
@@ -77,7 +71,7 @@ public class BoardClass
 	}
 	
 	
-	public static void printFunction(int knightsMoves[][])
+	public static void printFunction(int knightsMoves[][]) //prints array to terminal 
 		
 	{
 		
@@ -93,13 +87,13 @@ public class BoardClass
 		
 	}
  
-    public static boolean availibility(int x, int y, int knightsMoves[][])
+    public static boolean availibility(int x, int y, int knightsMoves[][]) // checks to see if spot on chessboard is open; if it has a value of -1 on the solution matrix
 		{ 
         	return (x >= 0 && y >= 0 && x < X && y < Y && knightsMoves[x][y] == -1);
     	} 
   	  		
      
-	public static int[][] initializeArray(int knightsMoves[][])
+	public static int[][] initializeArray(int knightsMoves[][]) // assigns all array indexes a value of -1
 		{
     		for (int x = 0; x < X; x++) 
 				{
@@ -111,7 +105,7 @@ public class BoardClass
 			return knightsMoves;
 		}
   
-	public static int[] warnsdorffAlgorithm(int x, int y, int knightsXMoves[], int knightsYMoves[], int knightsMoves[][])
+	public static int[] warnsdorffAlgorithm(int x, int y, int knightsXMoves[], int knightsYMoves[], int knightsMoves[][]) // heuristic that returns a matrix indicating the value of subsequent availible moves for each knight move (0-7) from x and y chordinates at this time, returns -1 for actual 0 values 
 	{
 		
 		int avalPrime[] = new int[8];
@@ -167,7 +161,7 @@ public class BoardClass
 	}
 	
 	
-  	public static int[] customizedSort(int avalPrime[])
+  	public static int[] customizedSort(int avalPrime[]) //sorts the knight's moves in increasing subsequent avaiblibility order, with -1s at the end of the matrix 
 	{
 		int optimumSequence[] = new int[8];
 		
@@ -292,7 +286,7 @@ public class BoardClass
 			
         	for (int k = 0; k < 8; k++) 
 				{ 
-            		xMove = x + knightsXMoves[movePrioritization[k]]; 
+            		xMove = x + knightsXMoves[movePrioritization[k]]; // applys warnsdorff's algorithm; the knight move with the least subsequent avaibible moves != 0 should be prioritized 
             		yMove = y + knightsYMoves[movePrioritization[k]]; 
 					
             			if (availibility(xMove, yMove, knightsMoves)) 
@@ -300,7 +294,7 @@ public class BoardClass
                 				knightsMoves[xMove][yMove] = kCounter; 
 								
 								
-                				if (recursionTool(xMove, yMove, kCounter + 1, knightsMoves, knightsXMoves, knightsYMoves)) 
+                				if (recursionTool(xMove, yMove, kCounter + 1, knightsMoves, knightsXMoves, knightsYMoves)) // calls itself and returns false if it finds a dead end in decision tree 
 						
                     				{
 										return true; 
