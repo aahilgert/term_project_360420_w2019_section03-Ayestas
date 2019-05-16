@@ -18,7 +18,7 @@ This object collects the data from RunData objects that are from knight's tours 
 
 ## SameersTestAnalysis.java
 
-Analysis.java has far too long of a run time for your to run on your computer. The first three boards have a run time of about 30 minutes to an hour, while the full program will take days to complete. Because of this, for your convenience, I have created an equivalent class that only operates on the first board (5 by 5). Analysis.java functions in exactly the same way, but over eleven board sizes.  This class will also print values with string attached to them for you to better understand their meanings.  The run time will be approximately five minutes.
+Analysis.java has far too long of a run time for you to run on your computer. The first three boards have a run time of about 30 minutes to an hour, while the full program will take days to complete. Because of this, for your convenience, I have created an equivalent class that only operates on the first board (5 by 5). Analysis.java functions in exactly the same way, but over eleven board sizes.  This class will also print values with string attached to them for you to better understand their meanings.  The run time will be approximately five minutes.
 
 ## SameersTestCase.java
 
