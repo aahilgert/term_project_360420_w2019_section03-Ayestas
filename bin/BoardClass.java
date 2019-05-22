@@ -285,8 +285,8 @@ public class BoardClass
 			
 			
         	for (int k = 0; k < 8; k++) 
-				{ 
-            		xMove = x + knightsXMoves[movePrioritization[k]]; // applys warnsdorff's algorithm; the knight move with the least subsequent avaibible moves != 0 should be prioritized 
+				{
+            		xMove = x + knightsXMoves[movePrioritization[k]]; // applies warnsdorff's algorithm; the knight move with the least subsequent avaibible moves != 0 should be prioritized 
             		yMove = y + knightsYMoves[movePrioritization[k]]; 
 					
             			if (availibility(xMove, yMove, knightsMoves)) 
