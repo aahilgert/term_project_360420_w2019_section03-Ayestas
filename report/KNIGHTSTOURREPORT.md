@@ -28,14 +28,14 @@ Warnsdorff's algorithm is a heuristic method specific to the knight's tour.  Thi
 
 ## Theoretical Methods
 
-In order to prove that decision problem is in NP-Complete, one must show that its solution validator runs in polynomial time versus the complexity of the specific problem. In the case of the knight's tour, the validating mechanism must function in poly(n) time, where n is the number of spaces (inputs) on the defined chessboard. Additionally, one must prove that the decision problem harder or as hard as all NP problems.  This is a difficult task, thus this must be proved against an already existing NP-complete problem, rather than against all existing NP problems.  
+In order to prove that decision problem is in NP-Complete, one must show that its solution validator runs in polynomial time versus the complexity of the specific problem. In the case of the knight's tour, the validating mechanism must function in poly(n) time, where n is the number of spaces (inputs) on the defined chessboard. Additionally, one must prove that the decision problem harder or as hard as all NP problems.  This is a difficult task, thus this must be proved against an already existing NP-Complete problem, rather than against all existing NP problems.  
 
-The chosen NP-Complete problem is the traveling salesman (Jones & Adamatzky, 2014).  This problem is in NP-complete, and has a run time in exponential time. Thus, if the knight's tour algorithm also runs in exponential (or plus) time, it is in NP-Hard.
+The chosen NP-Complete problem is the traveling salesman (Jones & Adamatzky, 2014).  This problem is in NP-Complete, and has a run time in exponential time. Thus, if the knight's tour algorithm also runs in exponential (or plus) time, it is in NP-Hard.
 
 ![Run Times](RunTimeGraph.jpg)
 
 The former proof can be proven by inspection. A validator algorithm, as shown in the isCorrectRun method, that will be discussed in greater detail in the general code anatomy section of this paper, functions by searching the 2-8 valid spaces 
-from the final move space of the knight for the next to last move space.  In the matrix below, the validator will start from the spot listed as 24, and search for spaces, a valid knight's move away, holding the 24-1 value.  The validator will go through this n-1 search until n = 0.  Intuitively, this function in linear time, as each space on the chessboard will provide the validator algorithm with a number of searches arbitrarily between 2 and 8.  Thus, the function of validation is in poly(n) time (linear time) where n is the number of board spaces and where poly(n) is approximately 5.5n=t(n). 
+from the final move space of the knight for the next to last move space.  In the matrix below, the validator will start from the spot listed as 24, and search for spaces, a valid knight's move away, holding the 24-1 value.  The validator will go through this n-1 search until n = 0.  Intuitively, this function is in linear time, as each space on the chessboard will provide the validator algorithm with a number of searches arbitrarily between 2 and 8.  Thus, the function of validation is in poly(n) time (linear time) where n is the number of board spaces and where poly(n) is approximately 5.5n=t(n). 
 
 ![Five by five solution matrix](fivebyfive.jpg)
 
@@ -67,15 +67,15 @@ BoardStatistics object calculates the total number of iterations on its board th
 
 ![isBoardValid Method](isBoardValid.jpg)
 
-Analysis.java initiates 11 BoardClass objects of different dimensions ranging from 5 by 5 to 10 by 10.
+Analysis.java initiates 12 BoardClass objects of different dimensions ranging from 5 by 5 to 10 by 10.
 
 ![BoardClass Object Initialization](BoardClassIn.jpg)
 
-This class then initiates 11 BoardStatistics objects of the same dimensions as the BoardClass objects.
+This class then initiates 12 BoardStatistics objects of the same dimensions as the BoardClass objects.
 
 ![BoardStatistics Object Initialization](BoardStatisticsIn.jpg)
 
-The class iterates through every starting position of every board, and accumulates the data within each BoardStatistics object. As seen below, every iteration of "fiveByFive.programIterationSpeed(x,y)" finds the solution of the knight's tour at specific coordinates and returns the run data in form of a RunData object.  Each RunData object is then transferred to the associated BoardStatistics object the addRunTotals method. 
+The class iterates through every starting position of every board, and accumulates the data within each BoardStatistics object. As seen below, every iteration of "fiveByFive.programIterationSpeed(x,y)" finds the solution of the knight's tour at specific coordinates and returns the run data in form of a RunData object.  Each RunData object is then transferred to the associated BoardStatistics object using the addRunTotals method. 
 
 ![Iteration Loop](IterationRuns.jpg)
 
@@ -99,11 +99,11 @@ The eight valid knight's moves are defined outside of any method.
 
 This method will initialize a knightsMoves array, consisting of all -1 values with the initial point then marked as zero, and initialize a move counter. The method then calls the recursionTool method to complete the knights tour. After the tour is completed, the method returns a solution matrix describing a valid knight's tour if there is a solution, if not, it returns a matrix initialized to the value of -1.
 
-The recursionTool method accepts the move counter, the correct point coordinates (x, y), the solution matrix, and the knight's move vectors as parameters. The method uses boolean heuristic recursion to solve the knight's tour. If the move counter as reached the value of the product of the chessboard's length and width, the method returns true and the chain of recursion terminates.  
+The recursionTool method accepts the move counter, the correct point coordinates (x, y), the solution matrix, and the knight's move vectors as parameters. The method uses boolean heuristic recursion to solve the knight's tour. If the move counter has reached the value of the product of the chessboard's length and width, the method returns true and the chain of recursion terminates.  
 
 ![recursionTool Method Parameters and True Catch](recursionTool1.jpg)
 
-For each iteration of the recursionTool's use, the warnsdorffAlgorithm and customizedSort methods are called upon to rank the knight's moves' priority in the interest of minimizing the number of decision trees.  Then, the knight's move of first priority is attempted, and the move counter is inputed in place of the -1 at each coordinate landed upon, until the availability method returns false (the move is outside the chessboard, or it is on a value not equal to -1).  Then, the move of next priority, is attempted, and so on.  In the event of no moves being valid, this iteration of the recursionTool method returns false, essentially going back one move, again replacing its coordinate with -1, and terminating its branch of the decision tree.  This process continues until move counter surpasses the maximum amount of moves. At this point, the solution matrix is returned to the programIteration method, as recursionTool finally returns true.  If all branches have been explored and there is no valid solution, the recursionTool method returns false.
+For each iteration of the recursionTool's use, the warnsdorffAlgorithm and customizedSort methods are called upon to rank the knight's moves' priority in the interest of minimizing the number of decision trees.  Then, the knight's move of first priority is attempted, and the move counter is inputed in place of the -1 at each coordinate landed upon, until the availability method returns false (the move is outside the chessboard, or it is on a value not equal to -1).  Then, the move of next priority, is attempted, and so on.  In the event of no moves being valid, this iteration of the recursionTool method returns false, essentially going back one move, again replacing its coordinate with -1, and terminating its branch of the decision tree.  This process continues until the move counter surpasses the maximum amount of moves. At this point, the solution matrix is returned to the programIteration method, as recursionTool finally returns true.  If all branches have been explored and there is no valid solution, the recursionTool method returns false.
 
 ![recursionTool Method Decision Tree Exploration and Heuristic Implementation](recursionTool2.jpg)
 
@@ -117,7 +117,7 @@ The program was run 10 times, but only until the completion of the fourth chessb
 
 ## Discussion
 
-The exponential relationship between time and spaces on the defined chessboard prove that an algorithm for the knight's tour runs in exponential time.  Since, an already defined NP-Hard (and NP-Complete) problem (the travelling salesman problem) also runs in exponential time, the knight's tour is NP-Hard.  As discussed previously, verifier polynomial runtime can be proved by inspection, and by corollary, the knight's tour is in 
+The exponential relationship between run time and spaces on the defined chessboard prove that an algorithm for the knight's tour runs in exponential time.  Since, an already defined NP-Hard (and NP-Complete) problem (the travelling salesman problem) also runs in exponential time, the knight's tour is NP-Hard.  As discussed previously, verifier polynomial run time can be proved by inspection, and by corollary, the knight's tour is in 
 NP. These two attributes prove NP-Completeness.  In concurrence with literature provided by McGown and Leininger of Oregon State University and The Massachusetts Institute of Technology, the knight's tour is indeed NP-Complete (McGown & Leininger, 2002).  This leads to the conclusion that the knight's tour is an eligible decision problem for modern-day cryptography. 
 
 ### References
