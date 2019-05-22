@@ -1,5 +1,3 @@
 # Data
 
-Place any data that you generate, or data that you rely on for validation, in this folder.
-
-Make sure to provide descriptions to each file in this *README* file.
+The excel document is the data produced by running Analysis.java 10 times until the completion of the fourth chessboard.  The data was copied from the terminal to an excel document, then graphed using excel to produce the DataGraph.jpg image. 

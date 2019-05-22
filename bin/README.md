@@ -25,6 +25,3 @@ Analysis.java has far too long of a run time for you to run on your computer. Th
 In addition or in lieu of the previous code, you could run this class to assure that my code correctly solves the knights tour.  This class will run the program on an initial point of 0i + 0j on a 5 by 5 board.  This will print its solution matrix onto the terminal.  Matrix numbers on the terminal correspond to move numbers.  0 is the initial point. A correct return is incredibly improbable for a knights tour, without an absolutely functional solving mechanism.
 
 There is more information as to each method's function commented in each file.
-
-
-

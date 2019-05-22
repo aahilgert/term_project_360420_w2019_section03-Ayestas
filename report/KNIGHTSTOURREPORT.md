@@ -10,19 +10,19 @@ With the potential introduction of phase-shifting random-access memory and the a
 
 ## General Theory
 
-The knight's tour is a sequence of moves that visit every real square on a defined chessboard only once, while moving according to the allowable vectors associated with Chess's knight-piece.  On classically constructed chessboards (rectangular chessboards) defined by k x n a knight's tour exists only when k is more than n and n is more than or equal to 5. This definition speaks to the existence of a tour on the chessboard in general.  However, tours may only be observed on spaces of a certain geometric type. For example, on a k x n board where k = n = 5, tours will exist only on squares of a certain colour (alternating squares). 
+The knight's tour is a sequence of moves that visit every real square on a defined chessboard only once, while moving according to the allowable vectors associated with Chess's knight-piece (Hooper & Whyld, 1996).  On classically constructed chessboards (rectangular chessboards) defined by k x n a knight's tour exists only when k is more than n and n is more than or equal to 5 (Schwenk, 1991). This definition speaks to the existence of a tour on the chessboard in general.  However, tours may only be observed on spaces of a certain geometric type. For example, on a k x n board where k = n = 5, tours will exist only on squares of a certain colour (alternating squares) (Schwenk, 1991). 
 
 ![Allowable Knight's Moves](KnightsMoves.jpg)
 
 ![Knight's Tour](Knights-Tour-Animation.gif)
 
-Computational complexity theory is a domain of computer science tasked with the classification of computational problems, solved by a computer, according to their difficulty. In the classification of decision problem complexity, there exist four distinct complexity groups: P, NP, NP-Hard, and NP-Complete.  The following Euler diagram describes the relationships between these sets of problems.  
+Computational complexity theory is a domain of computer science tasked with the classification of computational problems, solved by a computer, according to their difficulty. In the classification of decision problem complexity, there exist four distinct complexity groups: P, NP, NP-Hard, and NP-Complete (Van Leeuwen, 1998).  The following Euler diagram describes the relationships between these sets of problems.  
 
 ![Complexity Classes](Complexity.jpg)
 
-A decision problem is in P if the time it takes to find a problem's solution is in polynomial time, and thus, by corollary, its solution can be verified as true in polynomial time. A decision problem is in NP if its solution can be verified as true in polynomial time.  A decision problem is in NP-Hard if it is at least as complex as the hardest decision problem in NP. Problems are NP-Complete, if they satisfy the definition of both NP and NP-Hard problems. 
+A decision problem is in P if the time it takes to find a problem's solution is in polynomial time, and thus, by corollary, its solution can be verified as true in polynomial time (Van Leeuwen, 1998). A decision problem is in NP if its solution can be verified as true in polynomial time (Van Leeuwen, 1998).  A decision problem is in NP-Hard if it is at least as complex as the hardest decision problem in NP (Van Leeuwen, 1998). Problems are NP-Complete, if they satisfy the definition of both NP and NP-Hard problems (Van Leeuwen, 1998). 
 
-Warnsdorff's algorithm is a heuristic method specific to the knight's tour.  This heuristic prioritizes moves that land on a square with the least amount of subsequent available moves.  In the graphic below, numbers on squares a valid knight's move away indicate the number of available moves from each square, if the knight were to move to this square.  In this case, the square indicating the value of 2 available subsequent moves would be prioritized.  
+Warnsdorff's algorithm is a heuristic method specific to the knight's tour.  This heuristic prioritizes moves that land on a square with the least amount of subsequent available moves (Squirrel & Cull, 1996).  In the graphic below, numbers on squares a valid knight's move away indicate the number of available moves from each square, if the knight were to move to this square.  In this case, the square indicating the value of 2 available subsequent moves would be prioritized.  
 
 ![Warnsdorff's Prioritization](warnsdorff.jpg)
 
@@ -30,7 +30,7 @@ Warnsdorff's algorithm is a heuristic method specific to the knight's tour.  Thi
 
 In order to prove that decision problem is in NP-Complete, one must show that its solution validator runs in polynomial time versus the complexity of the specific problem. In the case of the knight's tour, the validating mechanism must function in poly(n) time, where n is the number of spaces (inputs) on the defined chessboard. Additionally, one must prove that the decision problem harder or as hard as all NP problems.  This is a difficult task, thus this must be proved against an already existing NP-complete problem, rather than against all existing NP problems.  
 
-The chosen NP-Complete problem is the traveling salesman.  This problem is in NP-complete, and has a run time in exponential time. Thus, if the knight's tour algorithm also runs in exponential (or plus) time, it is in NP-Hard.
+The chosen NP-Complete problem is the traveling salesman (Jones & Adamatzky, 2014).  This problem is in NP-complete, and has a run time in exponential time. Thus, if the knight's tour algorithm also runs in exponential (or plus) time, it is in NP-Hard.
 
 ![Run Times](RunTimeGraph.jpg)
 
@@ -111,15 +111,39 @@ The warnsdorffAlgorithm method counts the number of available subsequent moves t
 
 ## Results
 
-The program was run 10 times, but only until the completion of the fourth chessboard's iterations.  Each run took about half a day to complete.  The data printed to the terminal was manually transferred to an excel document.  This data was also transferred to an online data graphing website (because I thought it was more aesthetically pleasing than excel) to create the final time versus board spaces graph.  This graph seen below demonstrates an exponential relationship between time and spaces on the defined chessboard.  
+The program was run 10 times, but only until the completion of the fourth chessboard's iterations.  Each run took about half a day to complete.  The data printed to the terminal was manually transferred to an excel document. The final time versus board spaces graph was created using excel. This graph seen below demonstrates an exponential relationship between time and spaces on the defined chessboard. The excel graphing tool yielded a R-squared value of 0.9814, indicating that an exponential line of best fit appropriately describes the run time versus chessboard spaces relationship.
+
+![Data Graph](DataGraph.jpg)
 
 ## Discussion
 
 The exponential relationship between time and spaces on the defined chessboard prove that an algorithm for the knight's tour runs in exponential time.  Since, an already defined NP-Hard (and NP-Complete) problem (the travelling salesman problem) also runs in exponential time, the knight's tour is NP-Hard.  As discussed previously, verifier polynomial runtime can be proved by inspection, and by corollary, the knight's tour is in 
-NP. These two attributes prove NP-Completeness.  In concurrence with literature provided by McGown and Leininger of Oregon State University and The Massachusetts Institute of Technology, the knight's tour is indeed NP-Complete.  This leads to the conclusion that the knight's tour is an eligible decision problem for modern-day cryptography. 
+NP. These two attributes prove NP-Completeness.  In concurrence with literature provided by McGown and Leininger of Oregon State University and The Massachusetts Institute of Technology, the knight's tour is indeed NP-Complete (McGown & Leininger, 2002).  This leads to the conclusion that the knight's tour is an eligible decision problem for modern-day cryptography. 
 
 ### References
 
+Conrad, A.; Hindrichs, T.; Morsy, H. & Wegener, I. (1994). "Solution of the Knight's Hamiltonian Path Problem on Chessboards". Discrete Applied Mathematics. 50 (2): 125–134. doi:10.1016/0166-218X(92)00170-Q.
 
+Cobham, Alan (1965). "The intrinsic computational difficulty of functions". Proc. Logic, Methodology, and Philosophy of Science II. North Holland.
 
+Cull, P. and J. De Curtins. "Knight’s Tour Revisited." Fibonacci Quarterly. vol. 16, pp. 276-285. June, 1978.
 
+Hooper, David; Whyld, Kenneth (1996) [First pub. 1992]. "knight's tour". The Oxford Companion to Chess (2nd ed.). Oxford University Press. p. 204. ISBN 0-19-280049-3.
+
+Jones, Jeff; Adamatzky, Andrew (2014), "Computation of the travelling salesman problem by a shrinking blob" (PDF), Natural Computing: 2, 13
+
+Lobbing, M. and I Wegener. "The Number of Knight’s Tours Equals 33,439,123,484,294 - Counting with Binary Decision Diagrams." ftp://ftp.eccc.uni- trier.de/pub/eccc/reports/1995/TR95-047/index.html
+
+McGown K, Leininger A (2002) Knight’s tours. Cull, Paul (advisor). Oregon State Univesity, MIT and Oregon State University, 15 Aug 2002.
+
+Parberry, Ian (1997). "An Efficient Algorithm for the Knight's Tour Problem" (PDF). Discrete Applied Mathematics. 73 (3): 251–260. doi:10.1016/S0166-218X(96)00010-8.
+
+Pohl, Ira (July 1967). "A method for finding Hamilton paths and Knight's tours". Communications of the ACM. 10 (7): 446–449. CiteSeerX 10.1.1.412.8410. doi:10.1145/363427.363463.
+
+Schwenk, Allen. "Which Rectangular Chessboards Have a Knight’s Tour?." Mathematics Magazine. vol. 64, pp. 325-332. December, 1991.
+
+Seibel, K. "The Knight’s Tour on the Cylinder and Torus." REU at Oregon State University. August, 1994.
+
+Squirrel, Douglas; Cull, P. (1996). "A Warnsdorff-Rule Algorithm for Knight's Tours on Square Boards" (PDF). Retrieved 2011-08-21.
+
+Van Leeuwen, J (1998). Handbook of Theoretical Computer Science. Elsevier. p. 84. ISBN 978-0-262-72014-4.
