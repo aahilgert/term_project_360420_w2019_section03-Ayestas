@@ -1,7 +1,6 @@
 
 
-# Nondeterministic Polynomial Time Completeness: A Study of the Knight's Tour Using 
-Heuristic Recursion 
+# Nondeterministic Polynomial Time Completeness: A Study of the Knight's Tour Using Heuristic Recursion 
 
 ### Arthur Ayestas Hilgert
 
@@ -15,7 +14,7 @@ The knight's tour is a sequence of moves that visit every real square on a defin
 
 ![Allowable Knight's Moves](KnightsMoves.jpg)
 
-![Final Results](Results.jpg)
+![Knight's Tour](Knights-Tour-Animation.gif)
 
 Computational complexity theory is a domain of computer science tasked with the classification of computational problems, solved by a computer, according to their difficulty. In the classification of decision problem complexity, there exist four distinct complexity groups: P, NP, NP-Hard, and NP-Complete.  The following Euler diagram describes the relationships between these sets of problems.  
 
