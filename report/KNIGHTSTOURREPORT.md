@@ -35,7 +35,7 @@ The chosen NP-Complete problem is the traveling salesman (Jones & Adamatzky, 201
 ![Run Times](RunTimeGraph.jpg)
 
 The former proof can be proven by inspection. A validator algorithm, as shown in the isCorrectRun method, that will be discussed in greater detail in the general code anatomy section of this paper, functions by searching the 2-8 valid spaces 
-from the final move space of the knight for the next to last move space.  In the matrix below, the validator will start from the spot listed as 24, and search for spaces, a valid knight's move away, holding the 24-1 value.  The validator will go through this n-1 search until n = 0.  Intuitively, this function is in linear time, as each space on the chessboard will provide the validator algorithm with a number of searches arbitrarily between 2 and 8.  Thus, the function of validation is in poly(n) time (linear time) where n is the number of board spaces and where poly(n) is approximately 5.5n=t(n). 
+from the final move space of the knight for the next to last move space.  In the matrix below, the validator will start from the spot listed as 24, and search for spaces, a valid knight's move away, holding the 24-1 value.  The validator will go through this n-1 search until n = 0.  Intuitively, this function is in linear time, as each space on the chessboard will provide the validator algorithm with a number of searches arbitrarily between 2 and 8.  Thus, the function of validation is in poly(n) time (linear time) where n is the number of board spaces and where poly(n) is approximately 5.0n=t(n). 
 
 ![Five by five solution matrix](fivebyfive.jpg)
 
